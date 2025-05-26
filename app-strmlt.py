@@ -15,7 +15,7 @@ template = """Question: {question}
 
 Answer: (in one sentence please...)"""
 prompt = ChatPromptTemplate.from_template(template)
-model = OllamaLLM(model="codellama")
+model = OllamaLLM(model="deepseek-coder-v2:16b")
 
 # Initialize session state if not present
 if 'messages' not in st.session_state:
@@ -36,7 +36,7 @@ def process_input_stream(user_input):
         yield full_response  # Yield the response incrementally for streaming effect
 
 # Streamlit UI
-st.title("Code Llama w/ Ollama - a local code assistant 🦙")
+st.title("DeepSeek w/ Ollama - a local code assistant 🦙")
 
 # Display the conversation history
 for message in st.session_state['messages']:
@@ -58,7 +58,7 @@ if user_input:
     response_placeholder = st.empty()
 
     # Show spinner while AI generates the response
-    with st.spinner('Code Llama is thinking...'):
+    with st.spinner('Deepseek coder v2 is thinking...'):
         # Stream and display the AI response incrementally
         full_response = ""
         with st.chat_message("assistant"):
